@@ -8,13 +8,27 @@
         <title>Commercial</title>
     </head>
     <body class="container">
-        <h1 class="text-center text-primary">
-            Bienvenue sur votre espace, 
-            <span class="text-center text-danger">${commercialActif.getNom()}</span>
-        </h1>
-        <br />
+        <div class="row">
+            <div class="col-md-8">
+                <h1 class="text-center text-primary">
+                    Bienvenue sur votre espace, 
+                    <span class="text-center text-danger">${commercialActif.getNom()}</span>
+                </h1>
+            </div>
+                <div class="col-md-4" style="padding-top: 23px; float: right;">
+                <form method="post">
+                    <button class="btn btn-primary" name="deconnexion" value="deconnexion" type="submit" >
+                        Se déconnecter
+                    </button>
+                </form>
+                
+            </div>
+        </div>
         
-        <h2 class="text-center text-primary">Liste des commerciaux</h2>
+        <div class="row">
+            <h2 class="text-center text-primary">Liste des commerciaux</h2>
+        </div>       
+        
         
         <table class="table table-striped table-hover">
             <thead>

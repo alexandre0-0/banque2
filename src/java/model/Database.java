@@ -44,7 +44,7 @@ public class Database {
 //           = "oracle.jdbc.driver.OracleDriver";
 //   protected static final String DERBY_DRIVER_NAME
 //           = "org.apache.derby.jdbc.ClientDriver";
-   protected static final String DB_NAME = "banque";
+   protected static final String DB_NAME = "banque_javaee";
    protected static final String USER = "root";
    protected static final String PASSWORD = "";
 

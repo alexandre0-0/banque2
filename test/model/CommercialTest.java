@@ -15,21 +15,21 @@ import static org.junit.Assert.*;
  * @author Lamine
  */
 public class CommercialTest {
-    
+
     @Test
     public void testConstructeur() {
-        Commercial instance = new Commercial(1, "Lampion");
+        Commercial instance = new Commercial(1, "Lampion", null, null);
         assertEquals(1, instance.getNoCommercial());
         assertEquals("Lampion", instance.getNom());
     }
-    
+
     @Test
     public void testGetCommercial() throws SQLException {
         Commercial instance = Commercial.getCommercial(1);
         assertEquals(1, instance.getNoCommercial());
         assertEquals("Lampion", instance.getNom());
     }
-    
+
     @Test
     public void testGetListeClients() throws SQLException {
         ArrayList<Client> clients = new ArrayList<Client>();
@@ -37,12 +37,12 @@ public class CommercialTest {
         Client client3 = Client.getClient(3);
         clients.add(client2);
         clients.add(client3);
-        
+
         Commercial commercial1 = Commercial.getCommercial(1);
-        
+
         assertEquals(clients, commercial1.getListeClients());
     }
-    
+
     @Test
     public void testGetListeCommerciaux() throws SQLException {
         ArrayList<Commercial> listeCommerciaux = new ArrayList<>();
@@ -52,9 +52,27 @@ public class CommercialTest {
         listeCommerciaux.add(commercial1);
         listeCommerciaux.add(commercial2);
         listeCommerciaux.add(commercial3);
-        
+
         ArrayList<Commercial> listeDesCommerciaux = Commercial.getListeCommerciaux();
-        
+
         assertEquals(listeCommerciaux, listeDesCommerciaux);
+    }
+
+    @Test
+    public void testGetByEmailEtMdpSucces() throws SQLException {
+        Commercial result = Commercial.getByEmailEtMdp("lampion@mondass.com", "anatole");
+        assertNotNull(result);
+    }
+
+    @Test
+    public void testGetByEmailEtMdpEchecLogin() throws SQLException {
+        Commercial result = Commercial.getByEmailEtMdp("lampion@mondass.fr", "anatole");
+        assertNull(result);
+    }
+
+    @Test
+    public void testGetByEmailEtMdpEchecMdp() throws SQLException {
+        Commercial result = Commercial.getByEmailEtMdp("lampion@mondass.com", "mot de passe faux");
+        assertNull(result);
     }
 }

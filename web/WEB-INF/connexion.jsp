@@ -1,9 +1,4 @@
-<%-- 
-    Document   : connexion
-    Created on : 19 oct. 2017, 14:20:59
-    Author     : Lamine
---%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,18 +7,33 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Connexion</title>
     </head>
-    <body>
-        <h1>Connexion à votre espace</h1>
+    <body class="container">
+        <h1 class="text-center text-primary">Connexion à votre espace</h1>
         
-        <form method="post">
-            <label>
-                Identifiant : 
-                <input class="form-control" type="text" required />
-            </label>
-            <label>
-                Mot de passe : 
-                <input class="form-control" type="password" required />
-            </label>
+        <form class="col-md-6 col-md-offset-3" method="post">
+            <div class="form-group">
+                <label for="email">Email : </label>
+                <input id="email" name="email" class="form-control" type="email" placeholder="Saisissez votre email" required />
+            </div>
+            
+            <div class="form-group">
+                <label for="mdp">Mot de passe : </label>
+                <input id="mdp" name="mdp" class="form-control" type="password" placeholder="Saisissez votre mot de passe" required />
+            </div>
+            
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" />
+                <label class="form-check-label">Se souvenir de moi</label>
+            </div>
+            
+            <button class="btn btn-primary" type="submit" style="margin-top: 10px;">Se connecter</button>
+            
+            
         </form>
+        <c:if test="${msgErreur != null}">
+            <br />
+            <br />
+            <span class="alert alert-danger">${msgErreur}</span>
+        </c:if>
     </body>
 </html>

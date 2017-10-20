@@ -14,12 +14,43 @@ import java.util.Objects;
  */
 public class Commercial {
 
-    private int noCommercial;
-    private String nom;
+    public static Commercial getByEmailEtMdp(String email, String mdp) throws SQLException {
+        Connection connection = Database.getConnection();
+        Statement stmt = connection.createStatement();
+        String sql = "SELECT * FROM commercial";
+        ResultSet rs = stmt.executeQuery(sql);
+        Commercial commercial = null;
+        while(rs.next()) {
+            if(rs.getString("email").equals(email) && rs.getString("mdp").equals(mdp)) {
+                commercial = new Commercial(
+                        rs.getInt("no_commercial"),
+                        rs.getString("nom"), 
+                        rs.getString("email"), 
+                        rs.getString("mdp"));
+            }
+        }
+        rs.close();
+        stmt.close();
+        connection.close();
+        return commercial;
+    }
 
-    public Commercial(int noCommercial, String nom) {
+    private int noCommercial;
+    private String nom, email, mdp;
+
+    public Commercial(int noCommercial, String nom, String email, String mdp) {
         this.noCommercial = noCommercial;
         this.nom = nom;
+        this.email = email;
+        this.mdp = mdp;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getMdp() {
+        return mdp;
     }
 
     public int getNoCommercial() {
@@ -83,7 +114,11 @@ public class Commercial {
         ResultSet rs = stmt.executeQuery(sql);
         //listeCommerciaux.add(Commercial.getCommercial(rs.getInt("no_commercial")));
         while (rs.next()) {
-            listeCommerciaux.add(new Commercial(rs.getInt("no_commercial"), rs.getString("nom")));
+            listeCommerciaux.add(new Commercial(
+                    rs.getInt("no_commercial"), 
+                    rs.getString("nom"), 
+                    rs.getString("email"), 
+                    rs.getString("mdp")));
         }
         rs.close();
         stmt.close();
@@ -98,7 +133,11 @@ public class Commercial {
         ResultSet rs = stmt.executeQuery(sql);
         Commercial commercial = null;
         if (rs.next()) {
-            commercial = new Commercial(rs.getInt("no_commercial"), rs.getString("nom"));
+            commercial = new Commercial(
+                    rs.getInt("no_commercial"), 
+                    rs.getString("nom"), 
+                    rs.getString("email"), 
+                    rs.getString("mdp"));
         }
         rs.close();
         stmt.close();
