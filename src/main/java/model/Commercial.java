@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author Lamine
  */
-public class Commercial {
+public class Commercial extends User {
 
     public static Commercial getByEmailEtMdp(String email, String mdp) throws SQLException {
         Connection connection = Database.getConnection();
@@ -36,7 +36,6 @@ public class Commercial {
     }
 
     private int noCommercial;
-    private String nom, email, mdp;
 
     public Commercial(int noCommercial, String nom, String email, String mdp) {
         this.noCommercial = noCommercial;
@@ -45,21 +44,11 @@ public class Commercial {
         this.mdp = mdp;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getMdp() {
-        return mdp;
-    }
 
     public int getNoCommercial() {
         return noCommercial;
     }
 
-    public String getNom() {
-        return nom;
-    }
 
     @Override
     public int hashCode() {

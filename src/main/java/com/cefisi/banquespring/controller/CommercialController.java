@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class CommercialController {
 
-    @RequestMapping(value = "/commercial-{noCommercial}/com",
+    @RequestMapping(value = "/commercial-{noCommercial}",
             method = RequestMethod.GET)
     public String getComptesDuCommercial(
             ModelMap map,

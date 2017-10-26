@@ -19,13 +19,10 @@ import java.util.Objects;
  */
 
 
-public class Client {
+public class Client extends User {
     
     private int noClient;
-    private String nom;
-    private String email;
     private String commentaire;
-    private String mdp;
 
     public Client(int noClient, String nom, String email, String commentaire, String mdp) {
         this.noClient = noClient;
@@ -43,25 +40,11 @@ public class Client {
         this.commentaire = commentaire;
     }
 
-    public String getMdp() {
-        return mdp;
-    }
-
-    public void setMdp(String mdp) {
-        this.mdp = mdp;
-    }
 
     public int getNoClient() {
         return noClient;
     }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public String getEmail() {
-        return email;
-    }
 
     @Override
     public int hashCode() {

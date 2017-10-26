@@ -32,9 +32,8 @@
                 ${applicationScope["nbUtilisateurs"]} utilisateurs -
                 ${applicationScope["nbIdentifies"]} identifiés
                 <c:if test="${user != null}">
-                    <form style="display: inline;" action="connexion" method="post">
+                    <form style="display: inline;" action="deconnexion" method="post">
                         <button type="submit">Déconnecter ${user.email}</button>
-                        <input type="hidden" name="action" value="deconnecter"/>
                     </form>
                 </c:if>
             </span>
