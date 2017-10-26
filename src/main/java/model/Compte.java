@@ -46,6 +46,23 @@ public class Compte {
 
     private int noCompte, noClient;
     private double solde;
+    
+    //A effacer
+    private String pseudo;
+    
+    public String getPseudo() {
+        return pseudo;
+    }
+
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
+    }
+    //A effacer
+
+   
+
+    public Compte() {
+    }
 
     /**
      * Crée en mémoire un compte.

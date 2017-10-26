@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="p" tagdir="/WEB-INF/tags/"%>
+<%@taglib prefix="p" tagdir="/WEB-INF/tags/"%>
+<p:header title="Commercial"/>
 
 <h1 class="text-center text-info">Comptes du client ${noClient}</h1>
 ${comptesClient.size()} comptes.
